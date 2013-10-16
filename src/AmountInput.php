@@ -4,7 +4,6 @@ namespace Clevis;
 
 use Nette\Forms\Controls\TextInput;
 
-
 /**
  * TextInput pro zadávání částky zaokrouhlené na 2 desetinná místa.
  *
@@ -25,6 +24,10 @@ class AmountInput extends TextInput
 	public function getValue()
 	{
 		$value = parent::getValue();
+		if ($value === '')
+		{
+			return NULL;
+		}
 		if (is_string($value))
 		{
 			$value = str_replace(' ', '', $value);

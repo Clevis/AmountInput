@@ -33,4 +33,13 @@ class AmountInput_Test extends PHPUnit_Framework_TestCase
 		$this->assertSame('12 345,00', $input->control->attrs['value']);
 		$this->assertSame(12345.00, $input->getValue());
 	}
+
+	public function testEmptyStringSetsNull()
+	{
+		$form = new Nette\Application\UI\Form;
+		$form['input'] = $input = new Clevis\AmountInput;
+		$input->setValue('');
+		$this->assertSame(NULL, $input->getValue());
+	}
+
 }
